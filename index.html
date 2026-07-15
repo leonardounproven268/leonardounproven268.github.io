@@ -149,6 +149,16 @@
   .term .t{font-weight:600;color:var(--accent);font-size:.9rem}
   .term .c{color:var(--ink-soft);font-size:.95rem}
 
+  /* ---------- RESEARCH PILLARS ---------- */
+  .research-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:26px}
+  .research-grid .card h3{font-size:1.08rem;margin-bottom:10px}
+  .research-grid .card p{font-size:.95rem;color:var(--ink-soft);margin:0}
+  .research-grid .card .num{font-family:'Newsreader',serif;font-size:1.6rem;color:var(--accent-2);display:block;margin-bottom:6px;line-height:1}
+  .apps-band{margin-top:30px;padding:22px 26px;border-radius:var(--radius);background:var(--accent-soft);border:1px solid var(--line)}
+  .apps-band h3{font-size:1.05rem;color:var(--accent);margin-bottom:12px}
+  .apps-band .apps{display:flex;flex-wrap:wrap;gap:10px}
+  .apps-band .app{font-size:.88rem;background:#fff;border:1px solid var(--line);color:var(--ink-soft);padding:6px 13px;border-radius:8px}
+
   /* ---------- SERVICE ---------- */
   .svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
   .svc-grid ul{list-style:none;margin-top:10px}
@@ -179,6 +189,7 @@
     .cta-row{justify-content:center}
     .about-grid{grid-template-columns:1fr;gap:28px}
     .svc-grid{grid-template-columns:1fr}
+    .research-grid{grid-template-columns:1fr}
     .hero h1{font-size:2.3rem}
     nav ul{
       position:absolute;top:100%;right:0;left:0;
@@ -246,8 +257,8 @@
     <h2 class="section-title">Background</h2>
     <div class="about-grid">
       <div>
-        <p>I am an Assistant Professor in the Department of Mathematics and Statistics at California State University, Long Beach. My work centers on <strong>inverse problems</strong> — recovering unknown sources, coefficients, and initial conditions in partial differential equations from limited or noisy measurements.</p>
-        <p>A recurring theme in my research is designing <em>globally convergent</em> numerical methods that do not rely on a good initial guess, built on Carleman estimates, convexification, and contraction-mapping techniques. I validate these methods on both simulated and experimental data, and increasingly connect them with Bayesian optimization and machine learning.</p>
+        <p>I am an Assistant Professor in the Department of Mathematics and Statistics at California State University, Long Beach. I develop and analyze computational methods for scientific problems arising in security, industry, and the health sciences, drawing on two complementary perspectives: the model-based framework of <strong>partial differential equations</strong> and the data-driven approach of <strong>machine learning</strong>.</p>
+        <p>My work spans three connected areas — inverse problems, numerical analysis for nonlinear PDEs, and machine learning. A defining feature of my research is its close tie to real applications: I collaborate directly with engineers and physicists, validating my algorithms on both heavily noisy simulated data and real experimental data — from detecting buried explosive devices with the U.S. Army Research Laboratory to controlling gyrotrons for fusion power plants.</p>
         <p>Before joining CSULB, I was a Postdoctoral Research Scholar at North Carolina State University, mentored by Dr. <a href="https://math.sciences.ncsu.edu/people/tran/" target="_blank" rel="noopener">Hien Tran</a>, and earned my Ph.D. in Applied Mathematics at the University of North Carolina at Charlotte, advised by Dr. <a href="https://pages.charlotte.edu/loc-nguyen/" target="_blank" rel="noopener">Loc Nguyen</a>.</p>
       </div>
       <div class="card">
@@ -273,19 +284,49 @@
 <section id="research">
   <div class="wrap">
     <div class="section-label">Research</div>
-    <h2 class="section-title">Interests</h2>
-    <div class="tags" style="margin-bottom:28px">
+    <h2 class="section-title">Overview</h2>
+    <div style="max-width:72ch">
+      <p style="color:var(--ink-soft);font-size:1.02rem;margin-bottom:16px">I design and analyze computational methods that recover hidden information from indirect, incomplete, and highly noisy measurements. A hallmark of my methods is that they are <em>globally convergent</em>: they deliver reliable solutions without requiring a good initial guess, a property that sets them apart from conventional local, optimization-based approaches. I establish their convergence rigorously using Carleman estimates and validate them on both simulated and real experimental data.</p>
+      <p style="color:var(--ink-soft);font-size:1.02rem">Across these directions I have contributed to the major PDE families — elliptic, parabolic, hyperbolic, and transport equations, as well as Maxwell's and Navier–Stokes systems — increasingly bridging classical inverse-problem theory with modern operator learning and Bayesian optimization.</p>
+    </div>
+
+    <div class="tags" style="margin-top:24px">
       <span class="tag">Inverse Problems</span>
       <span class="tag">Numerical Analysis</span>
-      <span class="tag">Numerical Methods for PDEs</span>
       <span class="tag">Nonlinear PDEs</span>
       <span class="tag">Carleman Estimates &amp; Convexification</span>
-      <span class="tag">Bayesian Optimization</span>
-      <span class="tag">Machine Learning</span>
+      <span class="tag">Inverse Scattering</span>
+      <span class="tag">Operator Learning</span>
+      <span class="tag">Causal Bayesian Optimization</span>
     </div>
-    <div style="max-width:70ch">
-      <p style="color:var(--ink-soft);font-size:1.02rem;margin-bottom:16px">My research develops and analyzes numerical methods for ill-posed inverse problems arising in imaging, scattering, and heat conduction. The methods I build come with convergence guarantees and are tested against experimental measurements.</p>
-      <p style="color:var(--ink-soft);font-size:1.02rem">Current directions include time-dimensional reduction methods for reconstructing initial data (Maxwell and Navier–Stokes equations), phaseless inverse scattering, and expert-guided causal Bayesian optimization — bridging classical inverse-problem theory with modern learning-based approaches.</p>
+
+    <div class="research-grid">
+      <div class="card">
+        <span class="num">01</span>
+        <h3>Inverse Problems</h3>
+        <p>Recovering sources, coefficients, and initial conditions in PDEs from external, often one-sided measurements — motivated by explosive-device detection, seismic exploration, non-destructive testing, and biomedical imaging. I build globally convergent Carleman-based solvers and validate them on real experimental data.</p>
+      </div>
+      <div class="card">
+        <span class="num">02</span>
+        <h3>Numerical Analysis for Nonlinear PDEs</h3>
+        <p>Developing and analyzing methods for nonlinear PDEs that converge rapidly (at rate θⁿ) and relax the dependence on precise initial guesses: the Carleman contraction method, the Carleman–Newton method, and the Fourier-based dimensional reduction method, with applications to Hamilton–Jacobi equations.</p>
+      </div>
+      <div class="card">
+        <span class="num">03</span>
+        <h3>Machine Learning</h3>
+        <p>Data-driven methods for problems beyond the reach of classical models: F-ONETs (Fourier operation networks) for near real-time inversion, biologically-informed neural networks for epidemiological inverse problems, and expert-guided causal Bayesian optimization for high-stakes decision-making.</p>
+      </div>
+    </div>
+
+    <div class="apps-band">
+      <h3>Real-world collaborations &amp; applications</h3>
+      <div class="apps">
+        <span class="app">Landmine &amp; explosive-device detection · U.S. Army Research Laboratory</span>
+        <span class="app">Inverse scattering with experimental data · UNC Charlotte Physics &amp; Optical Science</span>
+        <span class="app">In-process milling dynamics · Mechanical Engineering</span>
+        <span class="app">Gyrotron control for fusion power · Calabazas Creek Research</span>
+        <span class="app">COVID-19 vaccination modeling · Johns Hopkins CSSE data</span>
+      </div>
     </div>
   </div>
 </section>
@@ -299,8 +340,8 @@
     <div class="pub-sub">Preprints &amp; Submitted</div>
     <ol class="pubs">
       <li><span class="authors-me">Thuy T. Le</span>, Minh-Binh Tran, and Loc H. Nguyen. <span class="title">A globally convergent Carleman–Picard method for an inverse initial-value problem for a nonlinear diffusive coagulation–fragmentation equation.</span> <span class="venue">arXiv:2603.21185</span>, <span class="year">2026</span>.</li>
-      <li>Zixuan Ma, Chenfeng Huang, <span class="authors-me">Thuy T. Le</span>, Hien Tran. <span class="title">Safe-Handover Causal Bayesian Optimization with Dynamic Expert Trust.</span> <span class="year">Submitted, 2026</span>.</li>
-      <li>Cong B. Van, <span class="authors-me">Thuy T. Le</span>, and Loc H. Nguyen. <span class="title">The inverse initial data problem for anisotropic Navier–Stokes equations via Legendre time reduction method.</span> <span class="venue">arXiv:2507.16810</span>, <span class="year">2026</span>.</li>
+      <li>Zixuan Ma, Chenfeng Huang, <span class="authors-me">Thuy T. Le</span>, Hien Tran. <span class="title">Safe-Handover Causal Bayesian Optimization with Dynamic Expert Trust.</span> <span class="year">Submitted, 2025</span>.</li>
+      <li>Cong B. Van, <span class="authors-me">Thuy T. Le</span>, and Loc H. Nguyen. <span class="title">The inverse initial data problem for anisotropic Navier–Stokes equations via Legendre time reduction method.</span> <span class="venue">arXiv:2507.16810</span>, <span class="year">2025</span>.</li>
     </ol>
 
     <div class="pub-sub">Journal Papers</div>
