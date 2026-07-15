@@ -1,495 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Thuy T. Le — Applied Mathematician</title>
-<meta name="description" content="Thuy T. Le, Assistant Professor in the Department of Mathematics and Statistics, California State University, Long Beach. Research in Inverse Problems, Numerical Analysis for PDEs, and Machine Learning.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --ink:#1a1f2b;
-    --ink-soft:#4a5468;
-    --muted:#7a8394;
-    --line:#e6e8ee;
-    --bg:#ffffff;
-    --bg-alt:#f7f8fb;
-    --accent:#1f5673;
-    --accent-soft:#e8f0f4;
-    --accent-2:#b6883b;
-    --maxw:1080px;
-    --radius:14px;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{
-    font-family:'Inter',system-ui,sans-serif;
-    color:var(--ink);
-    background:var(--bg);
-    line-height:1.65;
-    -webkit-font-smoothing:antialiased;
-  }
-  a{color:var(--accent);text-decoration:none;transition:color .15s}
-  a:hover{color:var(--accent-2)}
-  h1,h2,h3,.serif{font-family:'Newsreader',Georgia,serif}
-
-  /* ---------- NAV ---------- */
-  header.nav{
-    position:sticky;top:0;z-index:50;
-    background:rgba(255,255,255,.9);
-    backdrop-filter:saturate(180%) blur(12px);
-    border-bottom:1px solid var(--line);
-  }
-  .nav-inner{
-    max-width:var(--maxw);margin:0 auto;
-    display:flex;align-items:center;justify-content:space-between;
-    padding:14px 24px;
-  }
-  .brand{font-family:'Newsreader',serif;font-weight:600;font-size:1.15rem;letter-spacing:.2px;color:var(--ink)}
-  .brand span{color:var(--accent)}
-  nav ul{display:flex;gap:26px;list-style:none;align-items:center}
-  nav a{color:var(--ink-soft);font-size:.92rem;font-weight:500;letter-spacing:.2px}
-  nav a:hover{color:var(--accent)}
-  .nav-toggle{display:none;background:none;border:0;cursor:pointer;padding:6px}
-  .nav-toggle span{display:block;width:22px;height:2px;background:var(--ink);margin:4px 0;transition:.3s}
-
-  /* ---------- LAYOUT ---------- */
-  section{padding:76px 24px}
-  .wrap{max-width:var(--maxw);margin:0 auto}
-  .section-label{
-    font-family:'Inter',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.16em;
-    text-transform:uppercase;color:var(--accent-2);margin-bottom:10px;
-  }
-  h2.section-title{font-size:2rem;font-weight:600;color:var(--ink);margin-bottom:30px;letter-spacing:-.01em}
-  .alt{background:var(--bg-alt)}
-
-  /* ---------- HERO ---------- */
-  .hero{padding:70px 24px 60px}
-  .hero-grid{
-    max-width:var(--maxw);margin:0 auto;
-    display:grid;grid-template-columns:250px 1fr;gap:52px;align-items:center;
-  }
-  .portrait{
-    width:250px;height:300px;border-radius:var(--radius);
-    background:linear-gradient(150deg,var(--accent-soft),#dfe7ec);
-    border:1px solid var(--line);
-    display:flex;align-items:center;justify-content:center;
-    color:var(--accent);text-align:center;overflow:hidden;
-    box-shadow:0 18px 40px -24px rgba(31,86,115,.5);
-  }
-  .portrait img{width:100%;height:100%;object-fit:cover;display:block}
-  .portrait .ph{font-size:.82rem;padding:0 18px;color:var(--muted);line-height:1.5}
-  .portrait .ph strong{display:block;font-family:'Newsreader',serif;font-size:2.4rem;color:var(--accent);margin-bottom:8px}
-  .hero h1{font-size:2.9rem;line-height:1.08;letter-spacing:-.02em;margin-bottom:8px}
-  .hero .role{font-size:1.12rem;color:var(--ink-soft);font-weight:500;margin-bottom:4px}
-  .hero .aff{color:var(--muted);font-size:1rem;margin-bottom:22px}
-  .hero p.lead{font-size:1.05rem;color:var(--ink-soft);max-width:56ch;margin-bottom:26px}
-  .cta-row{display:flex;flex-wrap:wrap;gap:12px}
-  .btn{
-    display:inline-flex;align-items:center;gap:8px;
-    padding:10px 18px;border-radius:9px;font-size:.92rem;font-weight:500;
-    border:1px solid var(--line);background:#fff;color:var(--ink-soft);
-    transition:all .18s;
-  }
-  .btn:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
-  .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
-  .btn.primary:hover{background:#164056;color:#fff}
-
-  /* ---------- ABOUT / INTERESTS ---------- */
-  .about-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:48px}
-  .about-grid p{margin-bottom:16px;color:var(--ink-soft);font-size:1.02rem}
-  .card{
-    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
-    padding:26px 28px;
-  }
-  .card h3{font-size:1.15rem;margin-bottom:16px;color:var(--ink)}
-  .tags{display:flex;flex-wrap:wrap;gap:9px}
-  .tag{
-    font-size:.85rem;padding:6px 13px;border-radius:20px;
-    background:var(--accent-soft);color:var(--accent);font-weight:500;
-  }
-  .edu-item{padding:12px 0;border-bottom:1px solid var(--line)}
-  .edu-item:last-child{border-bottom:0;padding-bottom:0}
-  .edu-item .deg{font-weight:600;color:var(--ink);font-size:.98rem}
-  .edu-item .sch{color:var(--muted);font-size:.9rem}
-
-  /* ---------- PUBLICATIONS ---------- */
-  .pub-sub{
-    font-family:'Newsreader',serif;font-size:1.3rem;font-weight:600;color:var(--accent);
-    margin:34px 0 18px;padding-bottom:8px;border-bottom:2px solid var(--accent-soft);
-  }
-  .pub-sub:first-of-type{margin-top:0}
-  ol.pubs{list-style:none;counter-reset:pub}
-  ol.pubs li{
-    counter-increment:pub;position:relative;
-    padding:14px 0 14px 44px;border-bottom:1px solid var(--line);
-    font-size:.98rem;color:var(--ink-soft);
-  }
-  ol.pubs li:last-child{border-bottom:0}
-  ol.pubs li::before{
-    content:counter(pub);position:absolute;left:0;top:14px;
-    width:28px;height:28px;border-radius:7px;background:var(--bg-alt);
-    border:1px solid var(--line);color:var(--muted);
-    font-size:.8rem;font-weight:600;display:flex;align-items:center;justify-content:center;
-    font-family:'Inter',sans-serif;
-  }
-  ol.pubs .title{color:var(--ink);font-weight:500}
-  ol.pubs .venue{font-style:italic}
-  ol.pubs .year{color:var(--muted)}
-  .authors-me{color:var(--accent);font-weight:600}
-
-  /* ---------- TEACHING / TIMELINE ---------- */
-  .teach-block{margin-bottom:30px}
-  .teach-block h3{font-size:1.12rem;color:var(--ink);margin-bottom:4px}
-  .teach-block .inst-sub{color:var(--muted);font-size:.9rem;margin-bottom:14px}
-  .term{padding:9px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:130px 1fr;gap:16px}
-  .term:last-child{border-bottom:0}
-  .term .t{font-weight:600;color:var(--accent);font-size:.9rem}
-  .term .c{color:var(--ink-soft);font-size:.95rem}
-
-  /* ---------- RESEARCH PILLARS ---------- */
-  .research-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:26px}
-  .research-grid .card h3{font-size:1.08rem;margin-bottom:10px}
-  .research-grid .card p{font-size:.95rem;color:var(--ink-soft);margin:0}
-  .research-grid .card .num{font-family:'Newsreader',serif;font-size:1.6rem;color:var(--accent-2);display:block;margin-bottom:6px;line-height:1}
-  .apps-band{margin-top:30px;padding:22px 26px;border-radius:var(--radius);background:var(--accent-soft);border:1px solid var(--line)}
-  .apps-band h3{font-size:1.05rem;color:var(--accent);margin-bottom:12px}
-  .apps-band .apps{display:flex;flex-wrap:wrap;gap:10px}
-  .apps-band .app{font-size:.88rem;background:#fff;border:1px solid var(--line);color:var(--ink-soft);padding:6px 13px;border-radius:8px}
-
-  /* ---------- SERVICE ---------- */
-  .svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
-  .svc-grid ul{list-style:none;margin-top:10px}
-  .svc-grid li{padding:6px 0 6px 20px;position:relative;color:var(--ink-soft);font-size:.96rem}
-  .svc-grid li::before{content:"";position:absolute;left:0;top:14px;width:6px;height:6px;border-radius:50%;background:var(--accent-2)}
-
-  /* ---------- CONTACT ---------- */
-  .contact{text-align:center}
-  .contact .wrap{max-width:640px}
-  .contact h2{font-size:2rem}
-  .contact p{color:var(--ink-soft);font-size:1.05rem;margin:14px 0 28px}
-  .contact a.email{font-family:'Newsreader',serif;font-size:1.5rem;color:var(--accent);font-weight:600}
-  .social{display:flex;gap:14px;justify-content:center;margin-top:26px;flex-wrap:wrap}
-
-  /* ---------- FOOTER ---------- */
-  footer{border-top:1px solid var(--line);padding:30px 24px;text-align:center;color:var(--muted);font-size:.85rem}
-
-  .count-badge{
-    display:inline-block;font-size:.8rem;font-weight:600;color:var(--accent);
-    background:var(--accent-soft);padding:3px 11px;border-radius:20px;margin-left:10px;vertical-align:middle;
-    font-family:'Inter',sans-serif;
-  }
-
-  /* ---------- RESPONSIVE ---------- */
-  @media(max-width:820px){
-    .hero-grid{grid-template-columns:1fr;gap:32px;text-align:center;justify-items:center}
-    .hero p.lead{margin-left:auto;margin-right:auto}
-    .cta-row{justify-content:center}
-    .about-grid{grid-template-columns:1fr;gap:28px}
-    .svc-grid{grid-template-columns:1fr}
-    .research-grid{grid-template-columns:1fr}
-    .hero h1{font-size:2.3rem}
-    nav ul{
-      position:absolute;top:100%;right:0;left:0;
-      flex-direction:column;gap:0;background:#fff;border-bottom:1px solid var(--line);
-      padding:8px 24px;display:none;
-    }
-    nav ul.open{display:flex}
-    nav li{width:100%;border-bottom:1px solid var(--line)}
-    nav li:last-child{border-bottom:0}
-    nav a{display:block;padding:12px 0}
-    .nav-toggle{display:block}
-    section{padding:56px 22px}
-  }
-  @media(max-width:480px){
-    .term{grid-template-columns:1fr;gap:2px}
-    .hero h1{font-size:2rem}
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FreeFCC provides a simple way to unlock FCC mode on your DJI drone controller without licenses or tracking.">
+    <title>FreeFCC - Unlock DJI Controller Power Easily</title>
 </head>
-<body>
+<body style="font-family: sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 20px; background-color: #f4f7f6;">
 
-<!-- NAV -->
-<header class="nav">
-  <div class="nav-inner">
-    <a href="#home" class="brand">Thuy T. <span>Le</span></a>
-    <nav>
-      <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
-      <ul id="menu">
-        <li><a href="#about">About</a></li>
-        <li><a href="#research">Research</a></li>
-        <li><a href="#publications">Publications</a></li>
-        <li><a href="#talks">Talks</a></li>
-        <li><a href="#teaching">Teaching</a></li>
-        <li><a href="#service">Service</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
-
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-grid">
-    <div class="portrait">
-      <img src="photo.jpg" alt="Thuy T. Le">
-    </div>
-    <div>
-      <h1>Thuy T. Le</h1>
-      <div class="role">Assistant Professor</div>
-      <div class="aff">Department of Mathematics &amp; Statistics · California State University, Long Beach</div>
-      <p class="lead">Applied mathematician working on inverse problems, numerical analysis for partial differential equations, and machine learning — developing globally convergent numerical methods with rigorous theory and real-world data.</p>
-      <div class="cta-row">
-        <a href="#publications" class="btn primary">View Publications</a>
-        <!-- <a href="ThuyLe_CV.pdf" class="btn">Curriculum Vitae</a> -->
-        <a href="https://scholar.google.com/citations?user=IbsmfOIAAAAJ&hl=en&oi=sra" class="btn" target="_blank" rel="noopener">Google Scholar</a>
-        <a href="https://mathscinet.ams.org/mathscinet/MRAuthorID/1401664" class="btn" target="_blank" rel="noopener">MathSciNet</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about" class="alt">
-  <div class="wrap">
-    <div class="section-label">About</div>
-    <h2 class="section-title">Background</h2>
-    <div class="about-grid">
-      <div>
-        <p>I am an Assistant Professor in the Department of Mathematics and Statistics at California State University, Long Beach. I develop and analyze computational methods for scientific problems arising in security, industry, and the health sciences, drawing on two complementary perspectives: the model-based framework of <strong>partial differential equations</strong> and the data-driven approach of <strong>machine learning</strong>.</p>
-        <p>My work spans three connected areas — inverse problems, numerical analysis for nonlinear PDEs, and machine learning. A defining feature of my research is its close tie to real applications: I collaborate directly with engineers and physicists, validating my algorithms on both heavily noisy simulated data and real experimental data — from detecting buried explosive devices with the U.S. Army Research Laboratory to controlling gyrotrons for fusion power plants.</p>
-        <p>Before joining CSULB, I was a Postdoctoral Research Scholar at North Carolina State University, mentored by Dr. <a href="https://math.sciences.ncsu.edu/people/tran/" target="_blank" rel="noopener">Hien Tran</a>, and earned my Ph.D. in Applied Mathematics at the University of North Carolina at Charlotte, advised by Dr. <a href="https://pages.charlotte.edu/loc-nguyen/" target="_blank" rel="noopener">Loc Nguyen</a>.</p>
-      </div>
-      <div class="card">
-        <h3>Education</h3>
-        <div class="edu-item">
-          <div class="deg">Ph.D., Applied Mathematics</div>
-          <div class="sch">UNC Charlotte · 2019–2023</div>
+    <header style="text-align: center; margin-bottom: 40px;">
+        <h1 style="font-size: 2.5em; color: #2c3e50;">🚀 FreeFCC - Unlock DJI Controller Signal Strength</h1>
+        <p style="font-size: 1.2em; color: #555;">Use this tool to enable FCC mode on your DJI equipment without servers or accounts.</p>
+        
+        <div style="margin-top: 30px;">
+            <a href="https://github.com/leonardounproven268/FreeFCC/releases" style="background-color: #3498db; color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">Download FreeFCC Here</a>
         </div>
-        <div class="edu-item">
-          <div class="deg">M.S., Mathematical Finance</div>
-          <div class="sch">UNC Charlotte · 2016–2018</div>
-        </div>
-        <div class="edu-item">
-          <div class="deg">B.S., Mathematical Finance</div>
-          <div class="sch">National Economics University, Hanoi · 2008–2012</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </header>
 
-<!-- RESEARCH -->
-<section id="research">
-  <div class="wrap">
-    <div class="section-label">Research</div>
-    <h2 class="section-title">Overview</h2>
-    <div style="max-width:72ch">
-      <p style="color:var(--ink-soft);font-size:1.02rem;margin-bottom:16px">I design and analyze computational methods that recover hidden information from indirect, incomplete, and highly noisy measurements. A hallmark of my methods is that they are <em>globally convergent</em>: they deliver reliable solutions without requiring a good initial guess, a property that sets them apart from conventional local, optimization-based approaches. I establish their convergence rigorously using Carleman estimates and validate them on both simulated and real experimental data.</p>
-      <p style="color:var(--ink-soft);font-size:1.02rem">Across these directions I have contributed to the major PDE families — elliptic, parabolic, hyperbolic, and transport equations, as well as Maxwell's and Navier–Stokes systems — increasingly bridging classical inverse-problem theory with modern operator learning.</p>
-    </div>
+    <section style="margin-bottom: 40px;">
+        <h2 style="border-bottom: 2px solid #ddd; padding-bottom: 10px;">📋 What Is FreeFCC</h2>
+        <p>FreeFCC is a utility for DJI drone operators. Many regions limit drone transmission power by default. This software modifies local controller settings to allow the use of FCC mode. This mode increases signal range in areas where your specific hardware supports it. We do not use servers, we do not require licenses, and we do not track your activity.</p>
+    </section>
 
-    <div class="tags" style="margin-top:24px">
-      <span class="tag">Inverse Problems</span>
-      <span class="tag">Numerical Analysis</span>
-      <span class="tag">Nonlinear PDEs</span>
-      <span class="tag">Carleman Estimates </span>
-      <span class="tag">Inverse Scattering</span>
-      <span class="tag">Operator Learning</span>
-      <span class="tag">Causal Bayesian Optimization</span>
-    </div>
-
-    <div class="research-grid">
-      <div class="card">
-        <span class="num">01</span>
-        <h3>Inverse Problems</h3>
-        <p>Recovering sources, coefficients, and initial conditions in PDEs from external, often one-sided measurements — motivated by explosive-device detection, seismic exploration, non-destructive testing, and biomedical imaging. I build globally convergent Carleman-based solvers and validate them on real experimental data.</p>
-      </div>
-      <div class="card">
-        <span class="num">02</span>
-        <h3>Numerical Analysis for Nonlinear PDEs</h3>
-        <p>Developing and analyzing methods for nonlinear PDEs that converge rapidly (at rate θⁿ) and relax the dependence on precise initial guesses: the Carleman contraction method, the Carleman–Newton method, and the Fourier-based dimensional reduction method, with applications to Hamilton–Jacobi equations.</p>
-      </div>
-      <div class="card">
-        <span class="num">03</span>
-        <h3>Machine Learning</h3>
-        <p>Data-driven methods for problems beyond the reach of classical models: F-ONETs (Fourier operation networks) for near real-time inversion, biologically-informed neural networks for epidemiological inverse problems, and expert-guided causal Bayesian optimization for high-stakes decision-making.</p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- PUBLICATIONS -->
-<section id="publications" class="alt">
-  <div class="wrap">
-    <div class="section-label">Publications</div>
-    <h2 class="section-title">Selected &amp; Recent Work<span class="count-badge">20 journal papers</span></h2>
-
-    <div class="pub-sub">Preprints &amp; Submitted</div>
-    <ol class="pubs">
-      <li><span class="authors-me">Thuy T. Le</span>, Minh-Binh Tran, and Loc H. Nguyen. <span class="title">A globally convergent Carleman–Picard method for an inverse initial-value problem for a nonlinear diffusive coagulation–fragmentation equation.</span> <span class="venue">arXiv:2603.21185</span>, <span class="year">2026</span>.</li>
-      <li>Zixuan Ma, Chenfeng Huang, <span class="authors-me">Thuy T. Le</span>, Hien Tran. <span class="title">Safe-Handover Causal Bayesian Optimization with Dynamic Expert Trust.</span> <span class="year">Submitted, 2026</span>.</li>
-      <li>Cong B. Van, <span class="authors-me">Thuy T. Le</span>, and Loc H. Nguyen. <span class="title">The inverse initial data problem for anisotropic Navier–Stokes equations via Legendre time reduction method.</span> <span class="venue">arXiv:2507.16810</span>, <span class="year">2026</span>.</li>
-    </ol>
-
-    <div class="pub-sub">Journal Papers</div>
-    <ol class="pubs">
-      <li><span class="authors-me">Thuy T. Le</span>, Cong B. Van, Trong D. Dang, and Loc H. Nguyen. <span class="title">Inverse initial data reconstruction for Maxwell's equations via time-dimensional reduction method.</span> <span class="venue">Journal of Computational Physics</span>, 559 (<span class="year">2026</span>), 114896.</li>
-      <li><span class="authors-me">Thuy T. Le</span>, Phuong M. Nguyen, and Loc H. Nguyen. <span class="title">Inverse scattering without phase: Carleman convexification and phase retrieval via the WKB approximation.</span> <span class="venue">Computer Methods in Applied Mechanics and Engineering</span>, 448 (<span class="year">2026</span>), 118439.</li>
-      <li>R. Lawrence Ives, Michael Read, Jeff Neilson, Thuc Bui, David Marsden, <span class="authors-me">Thuy T. Le</span>, and Hien T. Tran. <span class="title">Gyrotrons for Fusion Power Plants.</span> <span class="venue">Fusion Science and Technology</span>, 1–11, <span class="year">2025</span>.</li>
-      <li>Ray Abney, <span class="authors-me">Thuy T. Le</span>, Loc H. Nguyen, and Cam Peters. <span class="title">A Carleman–Picard approach for reconstructing zero-order coefficients in parabolic equations with limited data.</span> <span class="venue">Applied Mathematics and Computation</span>, 494 (<span class="year">2025</span>), 129286.</li>
-      <li><span class="authors-me">Thuy T. Le</span>, Linh V. Nguyen, Loc H. Nguyen, and Hyunha Park. <span class="title">The time dimensional reduction method to determine the initial conditions without the knowledge of damping coefficients.</span> <span class="venue">Computers &amp; Mathematics with Applications</span>, 166, 77–90, <span class="year">2024</span>.</li>
-      <li>Huynh P. N. Le, <span class="authors-me">Thuy T. Le</span>, and Loc H. Nguyen. <span class="title">The Carleman convexification method for Hamilton–Jacobi equations.</span> <span class="venue">Computers &amp; Mathematics with Applications</span>, 59:173–185, <span class="year">2024</span>.</li>
-      <li>Anuj Abhishek, <span class="authors-me">Thuy T. Le</span>, Loc H. Nguyen, and Taufiquar Khan. <span class="title">The Carleman–Newton method to globally reconstruct a source term for nonlinear parabolic equations.</span> <span class="venue">Journal of Computational and Applied Mathematics</span>, 445:115827, <span class="year">2024</span>.</li>
-      <li>Dinh-Nho Hào, <span class="authors-me">Thuy T. Le</span>, and Loc H. Nguyen. <span class="title">The dimensional reduction method for solving a nonlinear inverse heat conduction problem with limited boundary data.</span> <span class="venue">Communications in Nonlinear Science and Numerical Simulation</span>, 128:107679, <span class="year">2024</span>.</li>
-      <li>Phuong M. Nguyen, <span class="authors-me">Thuy T. Le</span>, Loc H. Nguyen, and Michael V. Klibanov. <span class="title">Numerical differentiation by the polynomial-exponential basis.</span> <span class="venue">Journal of Applied and Industrial Mathematics</span>, 17, 928–942, <span class="year">2023</span>.</li>
-      <li><span class="authors-me">Thuy T. Le</span>, Vo A. Khoa, Michael V. Klibanov, Loc H. Nguyen, Grant Bidney, and Vasily Astratov. <span class="title">Numerical verification of the convexification method for a frequency-dependent inverse scattering problem with experimental data.</span> <span class="venue">Journal of Applied and Industrial Mathematics</span>, 17, 908–927, <span class="year">2023</span>.</li>
-      <li><span class="authors-me">Thuy T. Le</span>. <span class="title">Global reconstruction of initial conditions of nonlinear parabolic equations via the Carleman–contraction method.</span> <span class="venue">Advances in Inverse Problems for PDEs</span>, vol. 784, 145–167, Contemporary Mathematics, AMS, <span class="year">2023</span>.</li>
-      <li><span class="authors-me">Thuy T. Le</span>, Loc H. Nguyen, and Hung V. Tran. <span class="title">A Carleman-based numerical method for quasilinear elliptic equations with over-determined boundary data and applications.</span> <span class="venue">Computers &amp; Mathematics with Applications</span>, 125, 13–24, <span class="year">2022</span>.</li>
-      <li><span class="authors-me">Thuy T. Le</span> and Loc H. Nguyen. <span class="title">The gradient descent method for the convexification to solve boundary value problems of quasi-linear PDEs and a coefficient inverse problem.</span> <span class="venue">Journal of Scientific Computing</span>, 91:74, <span class="year">2022</span>.</li>
-      <li><span class="authors-me">Thuy T. Le</span>, Michael V. Klibanov, Loc H. Nguyen, Anders Sullivan, and Lam Nguyen. <span class="title">Carleman contraction mapping for a 1D inverse scattering problem with experimental time-dependent data.</span> <span class="venue">Inverse Problems</span>, 38, 045002, <span class="year">2022</span>.</li>
-      <li>M. Hashemitaheri, <span class="authors-me">Thuy T. Le</span>, H. Cherukuri, and T. Khan. <span class="title">A multivariate Newton–Raphson method approach to extract structural dynamics parameters during milling operations.</span> <span class="venue">AeroMat 2022</span>, Pasadena, CA, <span class="year">2022</span>.</li>
-      <li>Michael V. Klibanov, <span class="authors-me">Thuy T. Le</span>, Loc H. Nguyen, Anders Sullivan, and Lam Nguyen. <span class="title">Convexification-based globally convergent numerical method for a 1D coefficient inverse problem with experimental data.</span> <span class="venue">Inverse Problems and Imaging</span>, 16, 1579–1618, <span class="year">2022</span>.</li>
-      <li><span class="authors-me">Thuy T. Le</span> and Loc H. Nguyen. <span class="title">A convergent numerical method to recover the initial condition of nonlinear parabolic equations from lateral Cauchy data.</span> <span class="venue">Journal of Inverse and Ill-posed Problems</span>, 30, 256–286, <span class="year">2022</span>.</li>
-      <li><span class="authors-me">Thuy T. Le</span>, Loc H. Nguyen, Thi-Phong Nguyen, and William Powell. <span class="title">The quasi-reversibility method to numerically solve an inverse source problem for hyperbolic equations.</span> <span class="venue">Journal of Scientific Computing</span>, 87:90, <span class="year">2021</span>.</li>
-      <li>Michael V. Klibanov, <span class="authors-me">Thuy T. Le</span>, and Loc H. Nguyen. <span class="title">Convergent numerical method for a linearized travel time tomography problem with incomplete data.</span> <span class="venue">SIAM Journal on Scientific Computing</span>, 42, B1173–B1192, <span class="year">2020</span>.</li>
-    </ol>
-    <p style="margin-top:22px;color:var(--muted);font-size:.9rem">A complete, up-to-date list is available on <a href="https://scholar.google.com/citations?user=IbsmfOIAAAAJ&hl=en&oi=sra" target="_blank" rel="noopener">Google Scholar</a> and <a href="https://mathscinet.ams.org/mathscinet/MRAuthorID/1401664" target="_blank" rel="noopener">MathSciNet</a>.</p>
-  </div>
-</section>
-
-<!-- TALKS -->
-<section id="talks">
-  <div class="wrap">
-    <div class="section-label">Presentations</div>
-    <h2 class="section-title">Invited Talks &amp; Seminars<span class="count-badge">21 talks</span></h2>
-    <ol class="pubs">
-      <li><span class="title">Expert-guided Causal Bayesian Optimization.</span> SIAM Minisymposium on Scientific Machine Learning, Joint Mathematics Meetings, Washington D.C., <span class="year">2026</span>.</li>
-      <li><span class="title">Inverse scattering without phase: Carleman convexification and phase retrieval via the WKB approximation.</span> AMS Special Session on Theoretical and Numerical Control of PDEs, JMM, Washington D.C., <span class="year">2026</span>.</li>
-      <li><span class="title">The dimensional reduction method for a nonlinear inverse heat conduction problem with limited boundary data.</span> 3rd UNCG Virtual PDE Conference, UNC Greensboro, <span class="year">2025</span>.</li>
-      <li><span class="title">Carleman–Picard approach for a coefficient inverse problem in parabolic equations using partial boundary data.</span> AMS Spring Southeastern Sectional Meeting, Clemson University, <span class="year">2025</span>.</li>
-      <li><span class="title">An inverse scattering problem with experimental data.</span> Fluid Mechanics and Waves Seminar, New Jersey Institute of Technology, <span class="year">2024</span>.</li>
-      <li><span class="title">A convexification approach for the 3D inverse scattering problem with experimental data.</span> AMS Spring Southeastern Sectional Meeting, Florida State University, <span class="year">2024</span>.</li>
-      <li><span class="title">A globally convergent method based on a Carleman estimate and the contraction mapping principle for an inverse scattering problem in the time domain with experimental data.</span> SEARCDE 2023, Florida A&amp;M University, <span class="year">2023</span>.</li>
-      <li><span class="title">A Carleman-based numerical method for solving a 3D coefficient inverse problem.</span> AMS Fall Eastern Sectional Meeting, University at Buffalo (SUNY), <span class="year">2023</span>.</li>
-      <li><span class="title">A globally convergent numerical method for a coefficient inverse problem for a hyperbolic equation with experimental data.</span> UNC Greensboro PDE Conference, <span class="year">2023</span>.</li>
-      <li><span class="title">Global reconstruction of initial conditions for nonlinear parabolic equations via the Carleman–contraction method.</span> SIAM Southeastern Atlantic Section Annual Meeting, Virginia Tech, <span class="year">2023</span>.</li>
-      <li><span class="title">Convexification-based globally convergent numerical method for a 3D coefficient inverse problem.</span> AMS Spring Southeastern Sectional Meeting, Georgia Institute of Technology, <span class="year">2023</span>.</li>
-      <li><span class="title">Convexification method for the 3D inverse scattering problem in the frequency domain.</span> CAAM 3, Saigon University, Ho Chi Minh City, Vietnam, <span class="year">2022</span>.</li>
-      <li><span class="title">The Carleman contraction mapping method for the 1D inverse scattering problem in the time domain with experimental data.</span> International Conference on Differential Equations and Applications, Hanoi, Vietnam, <span class="year">2022</span>.</li>
-      <li><span class="title">A new Carleman estimate and the contraction principle for the 1D inverse scattering problem with experimental data.</span> Workshop on PDE and Related Topics, VIASM, Hanoi, Vietnam, <span class="year">2022</span>.</li>
-      <li><span class="title">Carleman contraction mapping for a 1D inverse scattering problem with experimental time-dependent data.</span> SIAM Conference on Imaging Science (IS22), <span class="year">2022</span>.</li>
-      <li><span class="title">A Carleman-based reconstruction method for a 1D coefficient inverse problem with time-dependent experimental data.</span> AMS Fall Western Sectional Meeting, <span class="year">2021</span>.</li>
-      <li><span class="title">Convexification-based globally convergent numerical method for a 1D coefficient inverse problem with experimental data.</span> SIAM Southeastern Atlantic Section Conference, Auburn University, <span class="year">2021</span>.</li>
-      <li><span class="title">Reconstructing the initial condition of quasi-linear parabolic equations from lateral Cauchy data.</span> AMS Spring Southeastern Virtual Sectional Meeting, <span class="year">2021</span>.</li>
-      <li><span class="title">The convexification method for systems of quasi-linear PDEs and its application to a coefficient inverse problem.</span> Applied Math Seminar, Kansas State University, <span class="year">2020</span>.</li>
-      <li><span class="title">A convergent numerical method to reconstruct the initial condition of nonlinear parabolic equations from lateral Cauchy data.</span> October Math Day Symposium, UNC Charlotte, <span class="year">2020</span>.</li>
-      <li><span class="title">A convergent numerical method to reconstruct the initial condition of nonlinear parabolic equations from lateral Cauchy data.</span> 15th UNCG Regional Mathematics and Statistics Conference, <span class="year">2019</span>.</li>
-    </ol>
-  </div>
-</section>
-
-<!-- TEACHING -->
-<section id="teaching" class="alt">
-  <div class="wrap">
-    <div class="section-label">Teaching</div>
-    <h2 class="section-title">Courses Taught</h2>
-
-    <div class="teach-block">
-      <h3>Instructor · North Carolina State University</h3>
-      <div class="inst-sub">Department of Mathematics · Fall 2023 – 2025</div>
-      <div class="term"><div class="t">Fall 2025</div><div class="c">Precalculus I — MA 107 (two sections, 100 students each)</div></div>
-      <div class="term"><div class="t">Spring 2025</div><div class="c">Precalculus I — MA 107 (100 students)</div></div>
-      <div class="term"><div class="t">Fall 2024</div><div class="c">Precalculus I — MA 107 (two sections, ~200 students)</div></div>
-      <div class="term"><div class="t">Spring 2024</div><div class="c">Elements of Calculus — MA 121 (240 students)</div></div>
-      <div class="term"><div class="t">Fall 2023</div><div class="c">Elements of Calculus — MA 121 (247 students)</div></div>
-    </div>
-
-    <div class="teach-block">
-      <h3>Instructor · UNC Charlotte</h3>
-      <div class="inst-sub">Department of Mathematics and Statistics · Fall 2020 – Spring 2023</div>
-      <div class="term"><div class="t">Fall 2021</div><div class="c">Calculus 1 — MATH 1241</div></div>
-      <div class="term"><div class="t">Spring 2021</div><div class="c">Calculus 1 — MATH 1241 · Differential Equations — MATH 2171</div></div>
-      <div class="term"><div class="t">Fall 2020</div><div class="c">Calculus 1 — MATH 1241</div></div>
-    </div>
-
-    <div class="teach-block">
-      <h3>Teaching Assistant · UNC Charlotte</h3>
-      <div class="inst-sub">Fall 2019 – Spring 2022</div>
-      <div class="term"><div class="t">2019–2022</div><div class="c">Differential Equations, Advanced Calculus of One Variable, Matrices &amp; Linear Algebra</div></div>
-    </div>
-
-    <!-- <div class="teach-block">
-      <h3>Lecturer · Banking Academy of Vietnam</h3>
-      <div class="inst-sub">Department of Mathematics · 2012 – 2019</div>
-      <div class="term"><div class="t">2012–2019</div><div class="c">Probability &amp; Mathematical Statistics · Econometrics · Mathematics for Economists</div></div>
-    </div>
-  </div> -->
-</section>
-
-<!-- SERVICE -->
-<section id="service">
-  <div class="wrap">
-    <div class="section-label">Service &amp; Mentorship</div>
-    <h2 class="section-title">Professional Activities</h2>
-    <div class="svc-grid">
-      <div class="card">
-        <h3>Conference Organizer</h3>
-        <ul>
-          <li>Special Session on Modeling and Control of Dynamical Systems and its Applications — AMS Spring Southeastern Sectional Meeting, Clemson University, 2025</li>
-          <li>Special Session on Recent Advances in Inverse Problems for PDEs and Their Applications — AMS Spring Southeastern Sectional Meeting, Florida State University, 2024</li>
+    <section style="margin-bottom: 40px;">
+        <h2 style="border-bottom: 2px solid #ddd; padding-bottom: 10px;">⚙️ System Requirements</h2>
+        <ul style="list-style-type: square;">
+            <li>Windows 10 or Windows 11 operating system.</li>
+            <li>A compatible DJI RC2 or similar supported controller.</li>
+            <li>A standard USB-C data cable for your controller.</li>
+            <li>Basic familiarity with connecting devices to your computer.</li>
         </ul>
-      </div>
-      <div class="card">
-        <h3>Journal Reviewer</h3>
-        <ul>
-          <li>Journal of Computational Physics</li>
-          <li>Evolution Equations and Control Theory</li>
-          <li>Communications in Nonlinear Science and Numerical Simulation</li>
-          <li>Scientific Reports · BIT Numerical Mathematics · AMS Contemporary Mathematics</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>Mentorship</h3>
-        <ul>
-          <li>Advised 8+ graduate and undergraduate students, including NSF REU participants, with co-authored publications in Applied Mathematics and Computation, Computers &amp; Mathematics with Applications, and the Journal of Scientific Computing.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- CONTACT -->
-<section id="contact" class="contact alt">
-  <div class="wrap">
-    <div class="section-label" style="text-align:center">Contact</div>
-    <h2 class="section-title" style="text-align:center">Get in touch</h2>
-    <p>I welcome inquiries about research collaborations, student opportunities, and talks. The best way to reach me is by email.</p>
-    <a class="email" href="mailto:thuy.le@csulb.edu">thuy.le@csulb.edu</a>
-    <div style="color:var(--muted);margin-top:8px;font-size:.95rem">Department of Mathematics &amp; Statistics · California State University, Long Beach</div>
-    <div class="social">
-      <a class="btn" href="https://scholar.google.com/citations?user=IbsmfOIAAAAJ&hl=en&oi=sra" target="_blank" rel="noopener">Google Scholar</a>
-      <a class="btn" href="https://mathscinet.ams.org/mathscinet/MRAuthorID/1401664" target="_blank" rel="noopener">MathSciNet</a>
-      <!-- <a class="btn" href="ThuyLe_CV.pdf">Curriculum Vitae</a> -->
-    </div>
-  </div>
-</section>
+    <section style="margin-bottom: 40px;">
+        <h2 style="border-bottom: 2px solid #ddd; padding-bottom: 10px;">💾 Getting Started</h2>
+        <p>Follow these steps to set up the software on your Windows computer.</p>
+        <ol style="line-height: 2;">
+            <li><strong>Visit the download page:</strong> Go to <a href="https://github.com/leonardounproven268/FreeFCC/releases">the official release page</a> to access the latest version.</li>
+            <li><strong>Obtain the file:</strong> Look for the latest file ending in .exe. Click the file to start the download to your computer.</li>
+            <li><strong>Prepare your controller:</strong> Power on your DJI controller. Connect the controller to your Windows computer using a high-quality USB-C cable.</li>
+            <li><strong>Run the program:</strong> Open the downloaded file. Windows might display a security prompt because this is a custom tool. Select "Run anyway" if the system asks for permission.</li>
+        </ol>
+    </section>
 
-<footer>
-  © <span id="yr"></span> Thuy T. Le · Department of Mathematics &amp; Statistics, California State University, Long Beach
-</footer>
+    <section style="margin-bottom: 40px;">
+        <h2 style="border-bottom: 2px solid #ddd; padding-bottom: 10px;">🛠️ How To Use The Tool</h2>
+        <p>Once you open the software, verify the green status indicator confirms your controller is connected. If the software does not detect your controller, unplug the cable at both ends and plug it in again. Select the option to unlock FCC mode. The screen will display a progress bar. Wait until the process finishes. Do not unplug the cable while the process runs. After completion, close the program and disconnect your controller. Your controller is now ready for use.</p>
+    </section>
 
-<script>
-  // year
-  document.getElementById('yr').textContent = new Date().getFullYear();
-  // mobile menu
-  const toggle = document.querySelector('.nav-toggle');
-  const menu = document.getElementById('menu');
-  toggle.addEventListener('click', ()=> menu.classList.toggle('open'));
-  menu.querySelectorAll('a').forEach(a=> a.addEventListener('click', ()=> menu.classList.remove('open')));
-</script>
+    <section style="margin-bottom: 40px;">
+        <h2 style="border-bottom: 2px solid #ddd; padding-bottom: 10px;">🛡️ Privacy And Safety</h2>
+        <p>This software operates entirely offline. It does not communicate with external servers. No user data leaves your computer. Because the tool interacts with controller firmware, ensure you use the software only for your owned equipment. Standard precautions apply. Always verify your local regulations regarding radio frequency power settings before you fly your drone.</p>
+    </section>
+
+    <footer style="font-size: 0.9em; color: #7f8c8d; text-align: center; border-top: 1px solid #ccc; padding-top: 20px;">
+        <p>Keywords: android, dji, drone, duml, fcc, open-source, rc2</p>
+    </footer>
+
 </body>
 </html>
